@@ -10,6 +10,8 @@ packages = [{include = "turnos_extranjeria"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 selenium = "^4.10.0"
+telepybot = "^0.1.9"
+dotenv = "^0.0.5"
 
 
 [build-system]
