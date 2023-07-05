@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "turnos-extranjeria"
+version = "0.0.0"
+description = "Automatizar la búsqueda de turnos en la web de extranjería."
+authors = ["Olga Mirete <olgamirete@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "turnos_extranjeria"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+selenium = "^4.10.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
