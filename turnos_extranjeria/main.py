@@ -7,7 +7,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 from datetime import datetime
-from os import getenv
+from os import getenv, path
 from dotenv import load_dotenv
 from telepybot import Telepybot
 
@@ -15,7 +15,9 @@ load_dotenv()
 
 def log(msg: str) -> None:
     timestamp = datetime.now().isoformat()[:19]
-    print(f"{timestamp}: {msg}")
+    mode = 'a' if path.exists('log') else 'w'
+    with open('log', mode, encoding='utf-8') as log:
+        log.write(f"{timestamp}: {msg}\n")
 
 def sleep_minutes(minutes: int) -> None:
     sleep(60*minutes)
@@ -83,6 +85,6 @@ if __name__ == "__main__":
             check_appointments(driver)
         except Exception as e:
             log('Error checking for appointments. See detail below:')
-            print(e)
+            log(str(e))
             telegram.sendMsg(USER_ID, str(e))
         sleep_minutes(20)
