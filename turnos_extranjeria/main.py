@@ -9,6 +9,7 @@ from time import sleep
 from datetime import datetime
 from os import getenv
 from dotenv import load_dotenv
+from telepybot import Telepybot
 
 load_dotenv()
 
@@ -25,12 +26,11 @@ BASE_URL = 'https://icp.administracionelectronica.gob.es/icpplustiem/citar?p=28&
 
 APPOINTMENT_ID = getenv('APPOINTMENT_ID')
 NIE = getenv('NIE')
-FULL_NAME =getenv('FULL_NAME')
-NIE_EXPIRY_DATE =getenv('NIE_EXPIRY_DATE')
+FULL_NAME = getenv('FULL_NAME')
+NIE_EXPIRY_DATE = getenv('NIE_EXPIRY_DATE')
+USER_ID = getenv('USER_ID')
 
 def check_appointments(driver: WebDriver):
-
-
     driver.get(BASE_URL)
     WebDriverWait(driver, 10).until(
         EC.title_contains("Proceso automático para la solicitud de cita previa")
@@ -69,11 +69,14 @@ def check_appointments(driver: WebDriver):
         log('No appointments found')
     except Exception as e:
         log('Appointment found!')
+        telegram.sendMsg(USER_ID, 'Appointment found!')
         sleep(3600*24)
+
 
 if __name__ == "__main__":
     chrome_options = Options()
     driver = webdriver.Chrome(options=chrome_options)
+    telegram = Telepybot(getenv('API_TOKEN'))
     while True:
         try:
             driver.delete_all_cookies()
@@ -81,4 +84,5 @@ if __name__ == "__main__":
         except Exception as e:
             log('Error checking for appointments. See detail below:')
             print(e)
+            telegram.sendMsg(USER_ID, str(e))
         sleep_minutes(20)
