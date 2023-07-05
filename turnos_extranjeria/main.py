@@ -81,4 +81,4 @@ if __name__ == "__main__":
         except Exception as e:
             log('Error checking for appointments. See detail below:')
             print(e)
-        sleep_minutes(15)
+        sleep_minutes(20)

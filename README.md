@@ -11,4 +11,4 @@ NIE_EXPIRY_DATE=<YOUR_NIE_EXPIRY_DATE>
 ```
 
 # Disclaimer
-DO NOT USE THIS TO SPAM THE SITE. This script checks for new appointments every 15 minutes and you should leave it like that, you are fully responsible for the use of this script. Also, if you do spam, they will likely block your IP address (or worse, your NIE) and you will have big trouble finding new appointments.
+DO NOT USE THIS TO SPAM THE SITE. This script checks for new appointments every 20 minutes and you should leave it like that, you are fully responsible for the use of this script. Also, if you do spam, they will likely block your IP address (or worse, your NIE) and you will have big trouble finding new appointments.
